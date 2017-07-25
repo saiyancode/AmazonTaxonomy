@@ -86,16 +86,14 @@ def save_tax():
         with open('taxonomy.csv',mode='a',encoding="utf-8") as file:
             file.write("{},{}\n".format(mapping[0],mapping[1]))
 
-    with open('taxonomy.csv',mode='a',encoding="utf-8") as file:
-        csv_out = csv.writer(file)
+    with open('bread.csv',mode='a',encoding="utf-8") as file:
         for row in bread:
-            csv_out.writerow(row)
+            file.write("{},{}\n".format(row[0], row[1]))
 
 
 if __name__ == "__main__":
     while len(queue):
         print(len(queue))
-        print(bread)
         url = queue.popleft()
         driver.get(url)
         soup = BeautifulSoup(driver.page_source)
